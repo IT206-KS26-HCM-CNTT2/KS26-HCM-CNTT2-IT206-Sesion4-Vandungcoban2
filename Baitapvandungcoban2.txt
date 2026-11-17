@@ -1,0 +1,39 @@
+BƯỚC 1: PHÂN TÍCH LỖI KHAI BÁO BIẾN SỐ LỘN XỘN
+
+Việc sử dụng đồng thời nhiều định dạng ngoặc khác nhau ([language] và {audience}) trong cùng một mẫu prompt gây ra 3 vấn đề nghiêm trọng cho hệ thống tự động hóa:
+
+1. Gãy luồng tự động hóa (Automation Failure): Các công cụ lập trình hoặc phần mềm thay thế chuỗi (như Python, Zapier, Make) thường dùng biểu thức chính quy (Regex) theo một quy tắc cố định (ví dụ chỉ tìm dấu ngoặc vuông `[...]`). Khi gặp `{audience}`, hệ thống sẽ bỏ qua không thay thế, dẫn đến việc AI nhận nguyên văn chuỗi thô `{audience}`.
+
+2. Xung đột cú pháp (Syntax Conflict): Dấu ngoặc nhọn `{}` trùng với ký tự cấu trúc của định dạng dữ liệu JSON hoặc chuỗi định dạng (f-string) trong lập trình, dễ gây lỗi biên dịch hoặc làm AI hiểu nhầm đó là một đối tượng dữ liệu cần xuất ra chứ không phải biến đầu vào.
+
+3. Khó bảo trì và mở rộng: Khi mẫu prompt dài ra, việc đặt tên biến viết thường, không đồng bộ định dạng khiến người vận hành dễ sót biến khi nhập liệu thủ công hoặc bàn giao cho người khác.
+
+BƯỚC 2: ĐỒNG BỘ BIẾN SỐ & VIẾT LẠI PROMPT CHUẨN
+
+[Bắt đầu nội dung Prompt chuẩn]
+
+Vai trò: Bạn là chuyên gia đào tạo về Trí tuệ nhân tạo.
+
+Nhiệm vụ: Hãy viết một bài chia sẻ ngắn gọn, dễ hiểu về chủ đề Kỹ thuật Prompting Nâng cao (Logic & Chuỗi).
+
+Tham số đầu vào bắt buộc:
+
+- Ngôn ngữ trình bày: [NGÔN_NGỮ]
+
+- Đối tượng độc giả mục tiêu: [ĐỐI_TƯỢNG]
+
+Ràng buộc thực thi:
+
+- Điều chỉnh văn phong và ví dụ minh họa sao cho phù hợp nhất với trình độ của [ĐỐI_TƯỢNG].
+
+- Toàn bộ nội dung phản hồi phải được viết bằng [NGÔN_NGỮ].
+
+[Kết thúc nội dung Prompt chuẩn]
+
+KẾT QUẢ CHẠY THỬ (MINH CHỨNG SAU KHI TRUYỀN BIẾN)
+
+* Giá trị truyền vào: [NGÔN_NGỮ] = "Tiếng Việt", [ĐỐI_TƯỢNG] = "Nhân viên văn phòng không chuyên về IT"
+
+* Phản hồi mẫu từ AI:
+
+"Chào các bạn đồng nghiệp khối văn phòng! Bạn có bao giờ thấy AI trả lời lan man khi giao việc phức tạp không? Kỹ thuật Prompting Nâng cao (Logic & Chuỗi) chính là giải pháp giúp bạn chia nhỏ công việc thành từng bước rõ ràng, giống như lập một quy trình checklist hàng ngày để AI làm việc chính xác và tiết kiệm thời gian hơn..."
